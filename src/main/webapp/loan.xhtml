@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<h:body>
+
+	Welcome This demo App Home page-- login success 
+	
+	
+	<h:form id="loginForm">
+
+
+		<p:panel>
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="ui-panelgrid-blank">
+
+				<p:outputLabel for="txt1" value="CustomerID: " />
+				<p:inputText id="txt1"
+					value="#{loanAccountOpenCtr.loaninfo.customerid}" required="true" />
+
+				<p:outputLabel for="txt2" value="LproductID: " />
+				<p:inputText id="txt2"
+					value="#{loanAccountOpenCtr.loaninfo.loanproductID}" required="true" />
+
+				<p:outputLabel for="txt3" value="remarks" />
+				<p:inputText id="txt3"
+					value="#{loanAccountOpenCtr.loaninfo.remarks}" required="true" />
+
+
+					<p:outputLabel for="txt4" value="SanctionAmount" />
+				<p:inputText id="txt4"
+					value="#{loanAccountOpenCtr.sanctioninfo.amount}" required="true" />
+					
+							<p:outputLabel for="txt5" value="Grace TIme: " />
+				<p:inputText id="txt5"
+					value="#{loanAccountOpenCtr.sanctioninfo.graceperiod}" required="true" />
+				
+
+				<p:commandButton value="Ajax Submit" id="ajax"
+					actionListener="#{loanAccountOpenCtr.saveData()}" />
+
+
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+	<!-- 
+	<p:dataTable id="userList" var="us" value="#{userCtr.users}">
+		<p:column headerText="Name">
+			<h:outputText value="#{us.name}" />
+		</p:column>
+
+		<p:column headerText="Password">
+			<h:outputText value="#{us.password}" />
+		</p:column>
+
+		<p:column headerText="email">
+			<h:outputText value="#{us.email}" />
+		</p:column>
+
+
+	</p:dataTable> -->
+
+
+
+
+
+</h:body>
+</html>
