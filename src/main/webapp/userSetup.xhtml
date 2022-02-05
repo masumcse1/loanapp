@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+	<h:head>
+		<f:facet name="first">
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+			<title>User Setup</title>
+		</f:facet>
+	</h:head>
+
+	<h:body class="customBody">
+		<p:layout fullPage="true">
+
+			<!-- **************************** Header Start from Here **************************** -->
+			<!-- <ui:include src="/view/common/header-footer.xhtml" /> -->
+			<!-- **************************** Header End Here *********************************** -->
+
+
+			<!-- **************************** Side bar Menu Start from Here **************************** -->
+			<!-- <ui:include src="/view/common/leftSideBarMenu.xhtml" /> -->
+			<!-- **************************** Side bar Menu End Here **************************** -->
+
+
+			<!-- **************************** Body Start from Here **************************** -->
+			<p:layoutUnit position="center" id="center" style="border: 0px;">
+
+				<h:form id="userSetupForm">
+
+					<p:fieldset legend="User Informantion Setup" id="toggleable"
+						toggleable="true" toggleSpeed="500">
+						<p:panelGrid id="grid" columns="4" layout="grid"
+							styleClass="ui-noborder">
+
+							<p:outputLabel for="userName" value="User Name: " />
+							<p:inputText id="userName" value="#{userSetupController.userInfo.userName}" />
+
+							<p:outputLabel for="defaultBranchCode" value="User Own Branch:" />
+							<p:selectOneMenu id="defaultBranchCode" value="#{userSetupController.userInfo.defaultBranchCode}"
+								dir="defaultBranchCode">
+								<f:selectItem itemLabel="00000 - Head Office"
+									itemValue="00000" />
+								<f:selectItem itemLabel="00001 - Mahakhali"
+									itemValue="00001" />
+								<f:selectItem itemLabel="00102 - Gulshan"
+									itemValue="00102" />
+								<f:selectItem itemLabel="00103 - Motijheel"
+									itemValue="00103" />
+								<f:selectItem itemLabel="00104 - Magura"
+									itemValue="00104" />
+								<f:selectItem itemLabel="00105 - Jessor"
+									itemValue="00105" />
+								<f:selectItem itemLabel="00105 - Dhanmondi"
+									itemValue="00105" />
+								<f:selectItem itemLabel="00104 - Rampura"
+									itemValue="00104" />
+							</p:selectOneMenu>
+							
+							<p:outputLabel for="isAdmin" value="Is Admin?: " />
+							<p:selectBooleanCheckbox id="isAdmin" value="#{userSetupController.userInfo.isAdmin}" />
+							
+							<p:outputLabel for="isSuperAdmin" value="Is Super Admin?: " />
+							<p:selectOneRadio id="isSuperAdmin" value="#{userSetupController.userInfo.isSuperAdmin}">
+									<f:selectItem itemValue="1" itemLabel="Yes" />
+									<f:selectItem itemValue="0" itemLabel="No" />
+							</p:selectOneRadio>	
+							
+							<!-- <p:panel header="Is Super Admin? :-" id="toggleable"
+								 toggleable="true" toggleSpeed="500" closable="true" closeSpeed="500" widgetVar="panel">
+								<p:selectOneRadio 
+									value="#{userSetupController.userInfo.isSuperAdmin}">
+									<f:selectItem itemValue="1" itemLabel="Yes" />
+									<f:selectItem itemValue="0" itemLabel="No" />
+								</p:selectOneRadio>
+							</p:panel>	 -->										
+
+						</p:panelGrid>
+					</p:fieldset>
+
+					<p:commandButton id="b1" value="Save" process="userSetupForm"
+							actionListener="#{userSetupController.saveData()}" />
+					
+					<p:commandButton id="b2" value="Update" process="userSetupForm"
+							actionListener="#{userSetupController.update()}" />
+					
+					<p:commandButton id="b3" value="Delete" process="userSetupForm"
+							actionListener="#{userSetupController.delete()}" />
+						
+					<p:commandButton id="b4" value="Reset">
+							<p:ajax update="userSetupForm" resetValues="true" />
+					</p:commandButton>					
+				</h:form>
+
+			</p:layoutUnit>
+			<!-- **************************** Body End from Here **************************** -->
+
+		</p:layout>
+
+	</h:body>
+
+</f:view>
+</html>
